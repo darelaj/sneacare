@@ -2,8 +2,14 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    
     <form method="POST" action="{{ route('login') }}">
         @csrf
+        
+        <!-- <div class="col-md-9 col-lg-6 col-xl-5 ">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+            class="img-fluid" alt="Sample image">
+        </div> -->
 
         <!-- Email Address -->
         <div>
@@ -43,5 +49,13 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
+        
     </form>
-</x-guest-layout>
+</x-guest-layout >
+
+
+
+
+
+
+
