@@ -30,8 +30,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/pemesanan', [TransactionController::class, 'create'])->middleware(['auth', 'verified'])->name('order');
-Route::post('/pemesananStore', [TransactionController::class, 'store'])->middleware(['auth', 'verified'])->('orderStore');
+Route::post('/pemesananStore', [TransactionController::class, 'store'])->middleware(['auth', 'verified'])->name('orderStore');
 Route::get('/status', [TransactionController::class, 'index'])->middleware(['auth', 'verified'])->name('status');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
