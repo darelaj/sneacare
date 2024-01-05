@@ -38,7 +38,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/kode', [TransactionController::class, 'showCode'])->name('kodeBayar');
 
     Route::get('/status', [TreatmentController::class, 'status'])->name('user-status');
+
+    
 });
+
+    Route::get('/repaint', [TreatmentController::class, 'repaint'])->name('repint');
+    Route::get('/repair', [TreatmentController::class, 'repair'])->name('repair');
+    Route::get('/unyellowing', [TreatmentController::class, 'unyellowing'])->name('unyellowing');
 
 
 

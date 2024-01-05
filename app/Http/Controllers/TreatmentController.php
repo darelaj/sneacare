@@ -10,4 +10,22 @@ class TreatmentController extends Controller
     {
         return view('treatment.status');
     }
+
+    public function repaint(){
+
+        return view('treatment.repaint');
+
+     }
+
+     public function repair(){
+
+        return view('treatment.repair');
+
+     }
+
+     public function unyellowing(){
+
+        return view('treatment.unyellowing');
+
+     }
 }
