@@ -83,4 +83,9 @@ class TransactionController extends Controller
         return redirect(RouteServiceProvider::HOME);
     }
 
+    public function showCode()
+    {
+        return view('form.kode-bayar');
+    }
+
 }

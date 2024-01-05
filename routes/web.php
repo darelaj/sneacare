@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TreatmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/bookingPayment', [TransactionController::class, 'payment'])->name('bookPayment');
     Route::post('/pay', [TransactionController::class, 'paymentPost'])->name('bookPaymentPost');
+
+    Route::get('/kode', [TransactionController::class, 'showCode'])->name('kodeBayar');
+
+    Route::get('/status', [TreatmentController::class, 'status'])->name('user-status');
 });
 
 
