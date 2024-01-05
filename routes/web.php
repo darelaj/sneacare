@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/bookingData', [TransactionController::class, 'data'])->name('bookData');
+    Route::post('/book', [TransactionController::class, 'dataPost'])->name('bookDataPost');
+
+    Route::get('/bookingPayment', [TransactionController::class, 'payment'])->name('bookPayment');
+    Route::post('/pay', [TransactionController::class, 'paymentPost'])->name('bookPaymentPost');
 });
 
-require __DIR__.'/auth.php';
+
+
+require __DIR__ . '/auth.php';
