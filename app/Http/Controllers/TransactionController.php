@@ -18,6 +18,7 @@ class TransactionController extends Controller
      */
     public function data()
     {
+
         return view('form.data');
     }
 
@@ -41,7 +42,11 @@ class TransactionController extends Controller
 
     public function payment()
     {
-        return view('form.payment');
+        if (!empty(session('data'))) {
+            return view('form.payment');
+        } else {
+            return redirect()->route('bookData');
+        }
     }
 
     public function paymentPost(Request $request)
@@ -101,7 +106,6 @@ class TransactionController extends Controller
     {
 
         $stat = DB::table('transactions')
-            // ->select('status')
             ->where('id', '=', $transactionId)
             ->value('status');
 
@@ -143,28 +147,9 @@ class TransactionController extends Controller
         return view('form.kode-bayar', compact('transactionId', 'metodePembayaran', 'currentDate', 'kodeBayar'));
     }
 
-    public function insertCode(Request $request)
+    public function confirm()
     {
-        // if ($request->file('buktiBayar')) {
-        //     $file = $request->file('buktiBayar');
-        //     $filename = date('YmdHi') . $file->getClientOriginalName();
-        //     $file->move(public_path('public/Image'), $filename);
-        //     $data['bukti_pembayaran'] = $filename;
-        // }
-
-        $file = $request->file('buktiPembayaran');
-        $filename = date('YmdHi') . $file->getClientOriginalName();
-        $file->move(public_path('public/Image'), $filename);
-
-        $data = [
-            'bukti_pembayaran' => $filename,
-        ];
-
-        $data = DB::table('detail_transactions')
-            ->where('transactionId', '=', $request->transactionId)
-            ->update($data);
-
-        return redirect()->route('confirmation');
+        return view('form.confirm');
     }
 
 }

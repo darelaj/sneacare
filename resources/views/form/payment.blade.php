@@ -17,24 +17,29 @@
         <input type="hidden" name="jumlahSepatu" value="{{ session('data.jumlahSepatu') }}">
 
         <div>
-            <input type="radio" name="paymentMethod" id="" class="my-4 ml-20 mr-6" value="1">
+            <input type="radio" name="paymentMethod" id="" class="my-4 ml-20 mr-6 font-['Inter'] font-semibold"
+                value="1">
             <span class="text-[#908989] text-xl"><b>COD (Cash On Delivery)</b></span>
         </div>
         <div class="w-[1200px] h-[0px] border border-black m-auto my-3"></div>
         <div>
-            <input type="radio" name="paymentMethod" id="" class="my-4 ml-20 mr-6" value="2">
+            <input type="radio" name="paymentMethod" id="" class="my-4 ml-20 mr-6 font-['Inter'] font-semibold"
+                value="2">
             <span class="text-[#908989] text-xl"><b>Virtual Account</b></span>
         </div>
         <div>
-            <input type="radio" name="paymentMethod" id="" class="my-4 ml-20 mr-6" value="3">
+            <input type="radio" name="paymentMethod" id="" class="my-4 ml-20 mr-6 font-['Inter'] font-semibold"
+                value="3">
             <span class="text-[#908989] text-xl"><b>Transfer Bank</b></span>
         </div>
         <div>
-            <input type="radio" name="paymentMethod" id="" class="my-4 ml-20 mr-6" value="4">
+            <input type="radio" name="paymentMethod" id="" class="my-4 ml-20 mr-6 font-['Inter'] font-semibold"
+                value="4">
             <span class="text-[#908989] text-xl"><b>Dana</b></span>
         </div>
         <div>
-            <input type="radio" name="paymentMethod" id="" class="my-4 ml-20 mr-6" value="5">
+            <input type="radio" name="paymentMethod" id="" class="my-4 ml-20 mr-6 font-['Inter'] font-semibold"
+                value="5">
             <span class="text-[#908989] text-xl"><b>Gopay</b></span>
         </div>
         <div class="w-[1200px] h-[0px] border border-black m-auto my-3"></div>

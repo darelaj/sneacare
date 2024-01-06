@@ -2,65 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\DetailTransaction;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreDetailTransactionRequest;
 use App\Http\Requests\UpdateDetailTransactionRequest;
 
 class DetailTransactionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function update(Request $request)
     {
-        //
+        if ($request->hasFile('buktiPembayaran')) {
+            // $fileName = $this->generateRandomString();
+            // $extension = $request->file('buktiPembayaran')->extension();
+
+            // Storage::putFileAs('bukti-bayar', $request->file('buktiPembayaran'), $fileName . '.' . $extension);
+
+            DB::table('detail_transactions')
+                ->where('transactionId', '=', $request->transactionId)
+                ->update([
+                    'bukti_pembayaran' => $request->file("buktiPembayaran")->store("public/BuktiPembayaran/" . auth()->user()->username),
+                ]);
+
+            DB::table('transactions')
+                ->where('id', '=', $request->transactionId)
+                ->update([
+                    'status' => 2
+                ]);
+
+            return redirect()->route('confirmation');
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    function generateRandomString($length = 20)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreDetailTransactionRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(DetailTransaction $detailTransaction)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(DetailTransaction $detailTransaction)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateDetailTransactionRequest $request, DetailTransaction $detailTransaction)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(DetailTransaction $detailTransaction)
-    {
-        //
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[random_int(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }

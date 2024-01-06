@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TreatmentController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\DetailTransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/pay', [TransactionController::class, 'paymentPost'])->name('bookPaymentPost');
 
     Route::get('/kode/{transactionId}', [TransactionController::class, 'showCode'])->name('kodeBayar');
-    Route::put('/kodePost', [TransactionController::class, 'insertCode'])->name('kodeBayarPost');
+    Route::put('/kodePost', [DetailTransactionController::class, 'update'])->name('kodeBayarPost');
     Route::get('/confirm', [TransactionController::class, 'confirm'])->name('confirmation');
 
     Route::get('/status', [TreatmentController::class, 'status'])->name('user-status');

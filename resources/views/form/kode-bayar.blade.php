@@ -32,7 +32,7 @@
             </p>
         </div>
         <div class="mt-10">
-            <form action="{{ route('kodeBayarPost') }}" method="POST">
+            <form action="{{ route('kodeBayarPost') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -40,7 +40,7 @@
 
                 <div>
                     <x-input-label for="buktiPembayaran" :value="__('Bukti Pembayaran')" class="mb-2 font-['Inter'] text-xl" />
-                    <input type="file" name="buktiPembayaran" id="" required>
+                    <input type="file" name="buktiPembayaran" id="" required class="form-control">
                 </div>
                 <div class="text-right">
                     <x-form-next-button class="mt-3 text-stone-400">
