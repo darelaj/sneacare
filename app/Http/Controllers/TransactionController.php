@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DetailTransaction;
+use Carbon\Carbon;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Models\DetailTransaction;
+use Illuminate\Support\Facades\DB;
 use App\Providers\RouteServiceProvider;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
@@ -67,6 +69,11 @@ class TransactionController extends Controller
         }
 
         $transaction->status = 1;
+        if ($request->paymentMethod === 1) {
+            $transaction->status = 2;
+        } else {
+            $transaction->status = 1;
+        }
         $transaction->save();
 
         $lastTransactionStored = $transaction->id;
@@ -80,12 +87,84 @@ class TransactionController extends Controller
         $detailTransaction->deliveryType = $request->deliver;
         $detailTransaction->save();
 
-        return redirect(RouteServiceProvider::HOME);
+        session([
+            'metodePembayaran' => $request->paymentMethod,
+            'phoneNumber' => $request->phoneNumber
+        ]);
+
+        $transactionId = $transaction->id;
+
+        return redirect()->route('kodeBayar', ['transactionId' => $transactionId]);
     }
 
-    public function showCode()
+    public function showCode(Request $request, $transactionId)
     {
-        return view('form.kode-bayar');
+
+        $stat = DB::table('transactions')
+            // ->select('status')
+            ->where('id', '=', $transactionId)
+            ->value('status');
+
+        $status = (int) $stat;
+        if ($status == 2) {
+            return view('form.confirm');
+        } elseif ($status > 2) {
+            return view('treatment.status');
+        }
+
+        $metodePembayaran = session('metodePembayaran');
+        $phoneNumber = session('phoneNumber');
+        $currentDate = Carbon::now()->toDateString();
+        $kodeBayar = '';
+        $metodePembayaran1 = '';
+
+        if ($metodePembayaran == 1) {
+            return view('form.confirm');
+        } elseif ($metodePembayaran == 2) {
+            $kodeBayar = '808' . $phoneNumber;
+        } elseif ($metodePembayaran == 3) {
+            $kodeBayar = '999' . $phoneNumber;
+        } elseif ($metodePembayaran == 4) {
+            $kodeBayar = '081786547725';
+        } elseif ($metodePembayaran == 5) {
+            $kodeBayar = '081786547725';
+        }
+
+        if ($metodePembayaran == 2) {
+            $metodePembayaran = "Virtual Account";
+        } elseif ($metodePembayaran == 3) {
+            $metodePembayaran = "Transfer Bank";
+        } elseif ($metodePembayaran == 4) {
+            $metodePembayaran = 'DANA';
+        } elseif ($metodePembayaran == 5) {
+            $metodePembayaran = 'Gopay';
+        }
+
+        return view('form.kode-bayar', compact('transactionId', 'metodePembayaran', 'currentDate', 'kodeBayar'));
+    }
+
+    public function insertCode(Request $request)
+    {
+        // if ($request->file('buktiBayar')) {
+        //     $file = $request->file('buktiBayar');
+        //     $filename = date('YmdHi') . $file->getClientOriginalName();
+        //     $file->move(public_path('public/Image'), $filename);
+        //     $data['bukti_pembayaran'] = $filename;
+        // }
+
+        $file = $request->file('buktiPembayaran');
+        $filename = date('YmdHi') . $file->getClientOriginalName();
+        $file->move(public_path('public/Image'), $filename);
+
+        $data = [
+            'bukti_pembayaran' => $filename,
+        ];
+
+        $data = DB::table('detail_transactions')
+            ->where('transactionId', '=', $request->transactionId)
+            ->update($data);
+
+        return redirect()->route('confirmation');
     }
 
 }
