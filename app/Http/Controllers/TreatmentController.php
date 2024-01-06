@@ -56,4 +56,13 @@ class TreatmentController extends Controller
         return view('treatment.unyellowing');
 
      }
+
+    //  admin
+     public function admin(){
+
+        return view('treatment.admin');
+
+     }
+
+     
 }

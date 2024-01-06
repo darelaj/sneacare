@@ -46,6 +46,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/repair', [TreatmentController::class, 'repair'])->name('repair');
     Route::get('/unyellowing', [TreatmentController::class, 'unyellowing'])->name('unyellowing');
 
+    Route::get('/admin', [TreatmentController::class, 'admin'])->name('admin');
+
 
 
 require __DIR__ . '/auth.php';
