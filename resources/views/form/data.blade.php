@@ -9,22 +9,22 @@
 
         <div class="flex justify-center">
             <input type="text" name="fullname" id="fullname" :value="old('fullname')"
-                class="bg-transparent border-b-2 border-0  border-[#908989] mr-24 mt-10 w-1/3" required
+                class="bg-transparent border-b-2 border-0 font-['Inter'] font-semibold border-[#908989] mr-24 mt-10 w-1/3" required
                 placeholder="Nama Lengkap">
             <input type="email" name="email" id="email" :value="old('email')"
-                class="bg-transparent border-b-2 border-0  border-[#908989] ml-24 mt-10 w-1/3" required placeholder="Email">
+                class="bg-transparent border-b-2 border-0 font-['Inter'] font-semibold border-[#908989] ml-24 mt-10 w-1/3" required placeholder="Email">
         </div>
         <div class="flex justify-center">
             <input type="text" name="phoneNumber" id="phoneNumber" :value="old('phoneNumber')"
-                class="bg-transparent border-b-2 border-0  border-[#908989] mr-24 mt-10 w-1/3" required
+                class="bg-transparent border-b-2 border-0 font-['Inter'] font-semibold border-[#908989] mr-24 mt-10 w-1/3" required
                 placeholder="No Telepon">
             <input type="text" name="address" id="address"
-                class="bg-transparent border-b-2 border-0  border-[#908989] ml-24 mt-10 w-1/3" required
+                class="bg-transparent border-b-2 border-0 font-['Inter'] font-semibold border-[#908989] ml-24 mt-10 w-1/3" required
                 placeholder="Alamat">
         </div>
         <div class="flex justify-center">
             <select name="treatment" id="treatment"
-                class="bg-transparent border-b-2 border-0  border-[#908989] mr-24 mt-10 w-1/3">
+                class="bg-transparent border-b-2 border-0 font-['Inter'] font-semibold border-[#908989] mr-24 mt-10 w-1/3">
                 <option value="-1" disabled selected>Jenis Treatment</option>
                 <option value="1">Repair</option>
                 <option value="2">Repaint</option>
@@ -32,17 +32,17 @@
             </select>
 
             <input type="date" placeholder="Tanggal Booking" name="bookDate" id="bookDate"
-                class="bg-transparent border-b-2 border-0  border-[#908989] ml-24 mt-10 w-1/3" required>
+                class="bg-transparent border-b-2 border-0 font-['Inter'] font-semibold border-[#908989] ml-24 mt-10 w-1/3" required>
         </div>
         <div class="flex justify-center">
             <select name="deliver" id="deliver"
-                class="bg-transparent border-b-2 border-0  border-[#908989] mr-24 mt-10 w-1/3">
+                class="bg-transparent border-b-2 border-0 font-['Inter'] font-semibold border-[#908989] mr-24 mt-10 w-1/3">
                 <option value="-1" disabled selected>Dikirim / Ke Toko</option>
                 <option value="1">Dikirim</option>
                 <option value="2">Ke Toko</option>
             </select>
             <input type="text" name="jumlahSepatu" id="jumlahSepatu"
-                class="bg-transparent border-b-2 border-0  border-[#908989] ml-24 mt-10 w-1/3" required
+                class="bg-transparent border-b-2 border-0 font-['Inter'] font-semibold border-[#908989] ml-24 mt-10 w-1/3" required
                 placeholder="Jumlah Sepatu">
         </div>
         <div class="text-right">

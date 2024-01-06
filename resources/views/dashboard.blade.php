@@ -44,11 +44,12 @@
                 <img src="https://cdn.discordapp.com/attachments/698554518278897664/1192162347251417280/Jordan1-removebg-preview_1.png"
                     alt="" class = "mt-10">
             </div>
-
-            <button class="bg-white rounded-3xl w-[300px] h-[70px] mt-[150px] ml-10 text-2xl"
-                style="font-family: 'Inter';">
-                LEARN MORE
-            </button>
+            <a href="{{ route('repaint') }}">
+                <button class="bg-white rounded-3xl w-[300px] h-[70px] mt-[150px] ml-10 text-2xl"
+                    style="font-family: 'Inter';">
+                    Lihat
+                </button>
+            </a>
         </div>
     </div>
 
@@ -61,11 +62,12 @@
                 <img src="https://cdn.discordapp.com/attachments/698554518278897664/1192609182982099014/Yeezy-removebg-preview_2.png"
                     alt="" class = "mt-10">
             </div>
-
-            <button class="bg-white rounded-3xl w-[300px] h-[70px] mt-[150px] ml-10 text-2xl"
-                style="font-family: 'Inter';">
-                LEARN MORE
-            </button>
+            <a href="{{ route('repair') }}">
+                <button class="bg-white rounded-3xl w-[300px] h-[70px] mt-[150px] ml-10 text-2xl"
+                    style="font-family: 'Inter';">
+                    Lihat
+                </button>
+            </a>
         </div>
     </div>
 
@@ -78,15 +80,16 @@
                 <img src="https://cdn.discordapp.com/attachments/698554518278897664/1192609261965037628/Shoes1_1.png"
                     alt="" class = "mt-10 w-[400px] h-[300]">
             </div>
-
-            <button class="bg-white rounded-3xl w-[300px] h-[70px] mt-[150px] ml-10 text-2xl"
-                style="font-family: 'Inter';">
-                LEARN MORE
-            </button>
+            <a href="{{ route('unyellowing') }}">
+                <button class="bg-white rounded-3xl w-[300px] h-[70px] mt-[150px] ml-10 text-2xl"
+                    style="font-family: 'Inter';">
+                    Lihat
+                </button>
+            </a>
         </div>
     </div>
 
 
-    
+
 
 </x-app-layout>

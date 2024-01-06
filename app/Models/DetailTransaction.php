@@ -15,6 +15,7 @@ class DetailTransaction extends Model
             'email',
             'phoneNumber',
             'address',
-            'deliveryType'
+            'deliveryType',
+            'bukti_pembayaran'
         ];
 }

@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TreatmentController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\DetailTransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,16 +36,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/bookingPayment', [TransactionController::class, 'payment'])->name('bookPayment');
     Route::post('/pay', [TransactionController::class, 'paymentPost'])->name('bookPaymentPost');
 
-    Route::get('/kode', [TransactionController::class, 'showCode'])->name('kodeBayar');
+    Route::get('/kode/{transactionId}', [TransactionController::class, 'showCode'])->name('kodeBayar');
+    Route::put('/kodePost', [DetailTransactionController::class, 'update'])->name('kodeBayarPost');
+    Route::get('/confirm', [TransactionController::class, 'confirm'])->name('confirmation');
 
     Route::get('/status', [TreatmentController::class, 'status'])->name('user-status');
 
-    
+
 });
 
-    Route::get('/repaint', [TreatmentController::class, 'repaint'])->name('repint');
-    Route::get('/repair', [TreatmentController::class, 'repair'])->name('repair');
-    Route::get('/unyellowing', [TreatmentController::class, 'unyellowing'])->name('unyellowing');
+Route::get('/repaint', [TreatmentController::class, 'repaint'])->name('repaint');
+Route::get('/repair', [TreatmentController::class, 'repair'])->name('repair');
+Route::get('/unyellowing', [TreatmentController::class, 'unyellowing'])->name('unyellowing');
 
     Route::get('/admin', [TreatmentController::class, 'admin'])->name('admin');
 

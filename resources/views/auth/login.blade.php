@@ -48,33 +48,34 @@
                 </label>
             </div>
 
-            <!-- Forgot Password -->
-            <div class="flex items-center justify-center mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-            </div>
+            <div class="flex">
+                <!-- Forgot Password -->
+                <div class="flex items-center justify-start mt-4 mr-5">
+                    @if (Route::has('password.request'))
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            href="{{ route('password.request') }}">
+                            {{ __('Forgot your password?') }}
+                        </a>
+                    @endif
+                </div>
 
-            <!-- <div class="flex mt-2">
+                <!-- <div class="flex mt-2">
                 <span class=" inline-block border border-solid bg-gray-900 w-1/2 h-1 text-justify "></span>
                 <span>yo</span>
                 <span class=" inline-block border border-solid  w-1/2 h-1"></span>
             </div> -->
 
-            <!-- Belum punya akun? -->
-            <div class="flex items-center justify-center mt-2">
-                <a
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-1">
-                    belum punya akun?</a>
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    href="{{ route('register') }}">
-                    {{ __(' Register here') }}
-                </a>
+                <!-- Belum punya akun? -->
+                <div class="flex items-center justify-end mt-4 ml-5">
+                    <p
+                        class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-1">
+                        Belum Punya Akun?</p>
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        href="{{ route('register') }}">
+                        {{ __(' Register here') }}
+                    </a>
+                </div>
             </div>
-
 
         </form>
     </div>
