@@ -40,7 +40,7 @@
 
                     <h1 class="mt-10 text-x">Harga : Rp20,000,00- per Sepatu</h1>
 
-                    <a href="{{ route('unyellowing') }}">
+                    <a href="{{ route('bookData') }}">
                         <button class="w-[200px] h-[40px] bg-[#1e4697] text-white mt-10">
                             Pesan Sekarang
                         </button>

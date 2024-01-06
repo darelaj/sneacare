@@ -24,7 +24,7 @@ class DetailTransactionController extends Controller
             DB::table('detail_transactions')
                 ->where('transactionId', '=', $request->transactionId)
                 ->update([
-                    'bukti_pembayaran' => $request->file("buktiPembayaran")->store("public/BuktiPembayaran/" . auth()->user()->username),
+                    'bukti_pembayaran' => basename($request->file("buktiPembayaran")->store("public/BuktiPembayaran/" . auth()->user()->username)),
                 ]);
 
             DB::table('transactions')

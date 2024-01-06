@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TreatmentController;
@@ -42,14 +43,15 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/status', [TreatmentController::class, 'status'])->name('user-status');
 
-
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/detail/{id}', [AdminController::class, 'show'])->name('detailData');
+    Route::put('/detailUpdate', [AdminController::class, 'update'])->name('detailUpdate');
 });
 
 Route::get('/repaint', [TreatmentController::class, 'repaint'])->name('repaint');
 Route::get('/repair', [TreatmentController::class, 'repair'])->name('repair');
 Route::get('/unyellowing', [TreatmentController::class, 'unyellowing'])->name('unyellowing');
 
-    Route::get('/admin', [TreatmentController::class, 'admin'])->name('admin');
 
 
 

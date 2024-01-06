@@ -18,7 +18,6 @@ class TransactionController extends Controller
      */
     public function data()
     {
-
         return view('form.data');
     }
 
@@ -94,7 +93,8 @@ class TransactionController extends Controller
 
         session([
             'metodePembayaran' => $request->paymentMethod,
-            'phoneNumber' => $request->phoneNumber
+            'phoneNumber' => $request->phoneNumber,
+            'jumlahPembayaran' => $transaction->jumlahPembayaran
         ]);
 
         $transactionId = $transaction->id;
@@ -116,6 +116,7 @@ class TransactionController extends Controller
             return view('treatment.status');
         }
 
+        $jumlahPembayaran = session('jumlahPembayaran');
         $metodePembayaran = session('metodePembayaran');
         $phoneNumber = session('phoneNumber');
         $currentDate = Carbon::now()->toDateString();
@@ -144,7 +145,7 @@ class TransactionController extends Controller
             $metodePembayaran = 'Gopay';
         }
 
-        return view('form.kode-bayar', compact('transactionId', 'metodePembayaran', 'currentDate', 'kodeBayar'));
+        return view('form.kode-bayar', compact('transactionId', 'jumlahPembayaran', 'metodePembayaran', 'currentDate', 'kodeBayar'));
     }
 
     public function confirm()

@@ -22,10 +22,15 @@
             <div class="mt-10 font-['Inter'] text-right justify-end items-end text-xl mr-0 m-auto" id="countdown">
             </div>
         </div>
-        <div class="flex flex-col">
+        <div class="flex">
             <p class="mt-10 font-['Inter'] text-xl">
                 Metode Pembayaran : {{ $metodePembayaran }}
             </p>
+            <p class="mt-10 font-['Inter'] text-xl">
+                Jumlah Pembayaran : {{ $jumlahPembayaran }}
+            </p>
+        </div>
+        <div>
             <p class="mt-6 text-xl font-['Inter']">
                 Instruksi Pembayaran :
 

@@ -16,12 +16,6 @@ class TreatmentController extends Controller
                 ->select(
                     'id',
                     'tanggalBooking',
-                    // DB::raw('(
-                    //     CASE
-                    //     WHEN treatmentType="1" THEN "Repair"
-                    //     WHEN treatmentType="2" THEN "Repaint"
-                    //     WHEN treatmentType="3" THEN "Unyellowing"
-                    // ) AS treatmentType'),
                     'treatmentType',
                     'jumlah_sepatu',
                     'metodePembayaran',
@@ -57,12 +51,4 @@ class TreatmentController extends Controller
 
      }
 
-    //  admin
-     public function admin(){
-
-        return view('treatment.admin');
-
-     }
-
-     
 }

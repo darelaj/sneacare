@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <!-- about us -->
     <section class="flex items-center  bg-stone-100  font-poppins  ">
         <div class="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-2">
@@ -38,18 +37,13 @@
                     <h1 class="mt-10 text-xl">2-3 Hari</h1>
 
                     <h1 class="mt-10 text-x">Harga : Rp20,000,00- per Sepatu</h1>
-                    <a href="{{ route('repair') }}">
+                    <a href="{{ route('bookData') }}">
                         <button class="w-[200px] h-[40px] bg-[#1e4697] text-white mt-10">
                             Pesan Sekarang
                         </button>
                     </a>
-
-
                 </div>
-
             </div>
-
         </div>
     </section>
-
 </x-app-layout>
