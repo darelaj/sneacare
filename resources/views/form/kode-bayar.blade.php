@@ -22,11 +22,11 @@
             <div class="mt-10 font-['Inter'] text-right justify-end items-end text-xl mr-0 m-auto" id="countdown">
             </div>
         </div>
-        <div class="flex">
-            <p class="mt-10 font-['Inter'] text-xl">
+        <div class="flex flex-col">
+            <p class="mt-7 font-['Inter'] text-xl text-left">
                 Metode Pembayaran : {{ $metodePembayaran }}
             </p>
-            <p class="mt-10 font-['Inter'] text-xl">
+            <p class="mt-4 font-['Inter'] text-xl">
                 Jumlah Pembayaran : {{ $jumlahPembayaran }}
             </p>
         </div>
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <script>
+    {{-- <script>
         let countdownTime = 2 * 60 * 60; // 2 hours in seconds
 
         function updateCountdown() {
@@ -98,5 +98,5 @@
 
         // Start the countdown
         updateCountdown();
-    </script>
+    </script> --}}
 @endsection

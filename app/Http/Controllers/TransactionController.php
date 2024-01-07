@@ -23,16 +23,21 @@ class TransactionController extends Controller
 
     public function dataPost(Request $request)
     {
-        $data = $request->validate([
-            'fullname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string'],
-            'phoneNumber' => ['required', 'string'],
-            'address' => ['required', 'string'],
-            'treatment' => ['required', 'integer'],
-            'bookDate' => ['required', 'date', 'after:today'],
-            'deliver' => ['required', 'integer'],
-            'jumlahSepatu' => ['required', 'integer']
-        ]);
+        $data = $request->validate(
+            [
+                'fullname' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string'],
+                'phoneNumber' => ['required', 'string'],
+                'address' => ['required', 'string'],
+                'treatment' => ['required', 'integer'],
+                'bookDate' => ['required', 'date', 'after:today'],
+                'deliver' => ['required', 'integer'],
+                'jumlahSepatu' => ['required', 'integer']
+            ],
+            [
+                'bookDate.after' => "Tanggal booking tidak boleh sebelum hari ini"
+            ]
+        );
 
         return redirect()->route('bookPayment')->with('data', $data);
 
@@ -106,51 +111,86 @@ class TransactionController extends Controller
     {
 
         $stat = DB::table('transactions')
+            ->select([
+                'status',
+                'jumlahPembayaran',
+                'metodePembayaran'
+            ])
             ->where('id', '=', $transactionId)
-            ->value('status');
+            ->first();
 
-        $status = (int) $stat;
-        if ($status == 2) {
+        $phone = DB::table('detail_transactions')
+            ->select([
+                'phoneNumber'
+            ])
+            ->where('transactionId', '=', $transactionId)
+            ->first();
+
+        // $status = (int) $stat->status;
+        if ($stat->status == 2) {
             return view('form.confirm');
-        } elseif ($status > 2) {
+        } elseif ($stat->status > 2) {
             return view('treatment.status');
         }
 
-        $jumlahPembayaran = session('jumlahPembayaran');
-        $metodePembayaran = session('metodePembayaran');
-        $phoneNumber = session('phoneNumber');
+        $jumlahPembayaran = $stat->jumlahPembayaran;
+        $metodePembayaran1 = $stat->metodePembayaran;
+        $phoneNumber = $phone->phoneNumber;
         $currentDate = Carbon::now()->toDateString();
         $kodeBayar = '';
-        $metodePembayaran1 = '';
+        $metodePembayaran = '';
 
-        if ($metodePembayaran == 1) {
+        if ($metodePembayaran1 == 1) {
             return view('form.confirm');
-        } elseif ($metodePembayaran == 2) {
+        } elseif ($metodePembayaran1 == 2) {
             $kodeBayar = '808' . $phoneNumber;
-        } elseif ($metodePembayaran == 3) {
+        } elseif ($metodePembayaran1 == 3) {
             $kodeBayar = '999' . $phoneNumber;
-        } elseif ($metodePembayaran == 4) {
+        } elseif ($metodePembayaran1 == 4) {
             $kodeBayar = '081786547725';
-        } elseif ($metodePembayaran == 5) {
+        } elseif ($metodePembayaran1 == 5) {
             $kodeBayar = '081786547725';
         }
 
-        if ($metodePembayaran == 2) {
+        if ($metodePembayaran1 == 2) {
             $metodePembayaran = "Virtual Account";
-        } elseif ($metodePembayaran == 3) {
+        } elseif ($metodePembayaran1 == 3) {
             $metodePembayaran = "Transfer Bank";
-        } elseif ($metodePembayaran == 4) {
+        } elseif ($metodePembayaran1 == 4) {
             $metodePembayaran = 'DANA';
-        } elseif ($metodePembayaran == 5) {
+        } elseif ($metodePembayaran1 == 5) {
             $metodePembayaran = 'Gopay';
         }
 
-        return view('form.kode-bayar', compact('transactionId', 'jumlahPembayaran', 'metodePembayaran', 'currentDate', 'kodeBayar'));
+        $remainingTime = $this->calculateRemainingTime($transactionId);
+
+        // return response()->json(['formattedTime' => $remainingTime]);
+
+        // return view('form.kode-bayar', compact('transactionId', 'jumlahPembayaran', 'metodePembayaran', 'currentDate', 'kodeBayar'));
+
+        return view('form.kode-bayar', [
+            'transactionId' => $transactionId,
+            'jumlahPembayaran' => $jumlahPembayaran,
+            'metodePembayaran' => $metodePembayaran,
+            'currentDate' => $currentDate,
+            'kodeBayar' => $kodeBayar,
+            'formattedTime' => $remainingTime,
+        ]);
     }
 
     public function confirm()
     {
         return view('form.confirm');
+    }
+
+    private function calculateRemainingTime($transactionId)
+    {
+        // For demonstration purposes, return a dummy value
+        $remainingSeconds = 120; // 2 minutes
+
+        // You may replace this with your own logic to calculate remaining time
+
+        return gmdate("i:s", $remainingSeconds); // Format: MM:SS
     }
 
 }

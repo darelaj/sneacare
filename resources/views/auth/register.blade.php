@@ -19,7 +19,7 @@
         <x-input-label for="email" :value="__('Email')" class="mt-4" />
         <div class="mt-2 border-l-[5px] border-[#4E92F3] rounded-xl">
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
-                required autocomplete="username" />
+                required autocomplete="email" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 

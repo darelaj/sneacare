@@ -19,6 +19,7 @@
             <input type="text" name="phoneNumber" id="phoneNumber" :value="old('phoneNumber')"
                 class="bg-transparent border-b-2 border-0 font-['Inter'] font-semibold border-[#908989] mr-24 mt-10 w-1/3"
                 required placeholder="No Telepon">
+
             <input type="text" name="address" id="address"
                 class="bg-transparent border-b-2 border-0 font-['Inter'] font-semibold border-[#908989] ml-24 mt-10 w-1/3"
                 required placeholder="Alamat">
@@ -35,6 +36,7 @@
             <input type="date" placeholder="Tanggal Booking" name="bookDate" id="bookDate"
                 class="bg-transparent border-b-2 border-0 font-['Inter'] font-semibold border-[#908989] ml-24 mt-10 w-1/3"
                 required>
+                <x-input-error :messages="$errors->get('bookDate')" class="mt-2" />
         </div>
         <div class="flex justify-center">
             <select name="deliver" id="deliver"
