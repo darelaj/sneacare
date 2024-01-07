@@ -31,13 +31,6 @@
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
-            <!-- button -->
-            <div class="mt-4 ">
-                <x-primary-button
-                    class=" bg-[#4E92F3] from-gray-700 to-gray-900 font-medium md:p-4 text-white uppercase w-full rounded-3xl">
-                    {{ __('Sign in') }}
-                </x-primary-button>
-            </div>
 
             <!-- Remember Me -->
             <div class="block mt-4">
@@ -46,6 +39,14 @@
                         class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                     <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
+            </div>
+
+            <!-- button -->
+            <div class="mt-4 ">
+                <x-primary-button
+                    class=" bg-[#4E92F3] from-gray-700 to-gray-900 font-medium md:p-4 text-white uppercase w-full rounded-3xl">
+                    {{ __('Sign in') }}
+                </x-primary-button>
             </div>
 
             <div class="flex">
