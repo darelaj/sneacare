@@ -70,11 +70,11 @@ class TransactionController extends Controller
         $treatment = (int) $request->treatment;
 
         if ($treatment === 1) {
-            $transaction->jumlahPembayaran = 100000 * $request->jumlahSepatu;
+            $transaction->jumlahPembayaran = 20000 * $request->jumlahSepatu;
         } elseif ($treatment === 2) {
-            $transaction->jumlahPembayaran = 60000 * $request->jumlahSepatu;
+            $transaction->jumlahPembayaran = 30000 * $request->jumlahSepatu;
         } elseif ($treatment === 3) {
-            $transaction->jumlahPembayaran = 120000 * $request->jumlahSepatu;
+            $transaction->jumlahPembayaran = 35000 * $request->jumlahSepatu;
         }
 
         $transaction->status = 1;

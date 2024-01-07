@@ -38,7 +38,7 @@
 
                     <h1 class="mt-10 text-xl">2-3 Hari</h1>
 
-                    <h1 class="mt-10 text-x">Harga : Rp20,000,00- per Sepatu</h1>
+                    <h1 class="mt-10 text-x">Harga : Rp35,000,00- per Sepatu</h1>
 
                     <a href="{{ route('bookData') }}">
                         <button class="w-[200px] h-[40px] bg-[#1e4697] text-white mt-10">
